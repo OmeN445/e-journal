@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lessons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+    <header>
+        <a href="/logout" th:text="'Вийти з акаунту ' + ${student.username}"></a>
+    </header>
+    <h2>Ваші оцінки:</h2>
+    <ul>
+        <table class="table">
+            <tr class="table-header">
+                <td>Оцінка</td>
+                <td>Заняття</td>
+                <td>Дата</td>
+                <td>Викладач</td>
+            </tr>
+            <tr th:each="mark: ${student.marks}">
+                <td th:text="${mark.grade}" />
+                <td th:text="${mark.lesson.name}" />
+                <td th:text="${mark.lesson.date}" />
+                <td th:text="${mark.lesson.teacher.firstName + ' ' + mark.lesson.teacher.lastName}" />
+            </tr>
+        </table>
+    </ul>
+</div>
+</body>
+</html>
